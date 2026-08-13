@@ -13,8 +13,8 @@ const AboutImg = ({ filename, alt }) => (
               relativePath
               name
               childImageSharp {
-                fixed(width: 350) {
-                  ...GatsbyImageSharpFixed
+                fluid(maxWidth: 500) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
@@ -27,8 +27,17 @@ const AboutImg = ({ filename, alt }) => (
 
       if (!image) return null;
 
-      const imageFixed = image.node.childImageSharp.fixed;
-      return <Img className="rounded shadow-lg" alt={alt} fixed={imageFixed} />;
+      const imageFluid = image.node.childImageSharp.fluid;
+      // Fluid images have no intrinsic width; give the wrapper an explicit width so
+      // it doesn't collapse to 0 inside the centered flex container (.about-wrapper__image).
+      return (
+        <Img
+          className="rounded shadow-lg"
+          alt={alt}
+          fluid={imageFluid}
+          style={{ width: '100%', maxWidth: '420px' }}
+        />
+      );
     }}
   />
 );

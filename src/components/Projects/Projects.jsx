@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Fade from 'react-reveal/Fade';
 import Tilt from 'react-tilt';
 import { Container, Row, Col } from 'react-bootstrap';
+import Reveal from '../Reveal/Reveal';
 import PortfolioContext from '../../context/context';
 import Title from '../Title/Title';
 import ProjectImg from '../Image/ProjectImg';
@@ -33,7 +33,7 @@ const Projects = () => {
             return (
               <Row key={id}>
                 <Col lg={4} sm={12}>
-                  <Fade
+                  <Reveal
                     left={isDesktop}
                     bottom={isMobile}
                     duration={1000}
@@ -69,10 +69,10 @@ const Projects = () => {
                         </a>
                       )}
                     </div>
-                  </Fade>
+                  </Reveal>
                 </Col>
                 <Col lg={8} sm={12}>
-                  <Fade
+                  <Reveal
                     right={isDesktop}
                     bottom={isMobile}
                     duration={1000}
@@ -105,7 +105,7 @@ const Projects = () => {
                         </Tilt>
                       </a>
                     </div>
-                  </Fade>
+                  </Reveal>
                 </Col>
               </Row>
             );

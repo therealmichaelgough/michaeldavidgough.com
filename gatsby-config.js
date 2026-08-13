@@ -1,6 +1,14 @@
+// Use dart-sass (pure JS) instead of the deprecated node-sass native module.
+const sass = require(`sass`);
+
 module.exports = {
   plugins: [
-    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        implementation: sass,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -17,6 +25,12 @@ module.exports = {
       options: {
         name: `pages`,
         path: `${__dirname}/src/pages/`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: 'michaeldavidgough.com',
       },
     },
     {
